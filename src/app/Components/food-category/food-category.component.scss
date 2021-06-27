@@ -1,0 +1,83 @@
+@media (min-width: 100px) {
+  .custom-img {
+    width: 2rem;
+    max-width: 6rem;
+    min-width: 1rem;
+  }
+}
+
+@media (min-width: 576px) {
+  .custom-img {
+    width: 1rem;
+    max-width: 6rem;
+    min-width: 1rem;
+  }
+}
+
+// Medium devices (tablets, 768px and up)
+@media (min-width: 768px) {
+  .custom-img {
+    width: 4rem;
+    max-width: 6rem;
+    min-width: 1rem;
+  }
+}
+
+// Large devices (desktops, 992px and up)
+@media (min-width: 992px) {
+  .custom-img {
+    width: 4rem;
+    max-width: 6rem;
+    min-width: 1rem;
+  }
+}
+
+// Extra large devices (large desktops, 1200px and up)
+@media (min-width: 1200px) {
+  .custom-img {
+    width: 7rem;
+    max-width: 7rem;
+    min-width: 1rem;
+  }
+}
+
+@media (min-width: 1920px) {
+  .custom-img {
+    width: 7rem;
+    max-width: 7rem;
+    min-width: 1rem;
+  }
+}
+img {
+  border-radius: 20%;
+}
+
+.img-wrapper {
+  border-radius: 100%;
+  width: fit-content;
+  border: 2px solid grey;
+
+  &:hover {
+    border: 2px solid rebeccapurple;
+  }
+}
+
+.img-wrapper-selected {
+  border-radius: 100%;
+  width: fit-content;
+  border: 2px solid rebeccapurple;
+}
+
+ul {
+  cursor: pointer;
+  background-color: transparent;
+}
+
+ul > li {
+  cursor: pointer;
+  background-color: transparent;
+}
+
+.banner {
+  background-color: lighten($color: #6610f2, $amount: 45%);
+}

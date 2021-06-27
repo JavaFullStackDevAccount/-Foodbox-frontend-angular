@@ -1,0 +1,64 @@
+<mat-card class="mb-5 scale-in-top" *ngIf="foodItemInfo">
+  <img mat-card-image [src]="foodItemInfo['imageUrl']" alt="Food item" />
+  <mat-card-content>
+    <mat-card-title>{{ foodItemInfo["title"] }}</mat-card-title>
+    <p class="text-muted">
+      {{ foodItemInfo["description"] }}
+    </p>
+    <p>
+      <mat-icon
+        style="font-size: 1.2rem; color: #ffd700"
+        *ngFor="let star of getRatingsArray()"
+        >star</mat-icon
+      >
+    </p>
+    <p class="text-muted">Discount: {{ foodItemInfo["discount"] }}%</p>
+
+    <p class="text-danger">Price: {{ foodItemInfo["price"] }} INR</p>
+
+    <button
+      class="delete-food-button"
+      (click)="deleteFoodItem(foodItemInfo['id'])"
+    >
+      <mat-icon style="vertical-align: middle">close</mat-icon>
+    </button>
+  </mat-card-content>
+
+  <mat-card-actions class="w-100 text-left px-0 mx-0 pb-2">
+    <a
+    *ngIf="isUserAdmin"
+      [routerLink]="['/edit/food/', foodItemInfo['id']]"
+      class="mr-5 text-warning text-decoration-none"
+      ><mat-icon style="font-size: 20px; vertical-align: middle">edit</mat-icon
+      >Edit</a
+    >
+    <a
+      href="javascript:void(0)"
+      (click)="updateFoodItemVisiblity(foodItemInfo['id'])"
+      *ngIf="isUserAdmin && foodItemInfo['publicVisiblity']"
+      class="mr-3 text-primary text-decoration-none"
+      ><mat-icon style="font-size: 20px; vertical-align: middle"
+        >visibility</mat-icon
+      >Public</a
+    >
+
+    <a
+      href="javascript:void(0)"
+      *ngIf="isUserAdmin &&  !foodItemInfo['publicVisiblity']"
+      (click)="updateFoodItemVisiblity(foodItemInfo['id'])"
+      class="mr-3 text-secondary text-decoration-none"
+      ><mat-icon style="font-size: 20px; vertical-align: middle"
+        >visibility_off</mat-icon
+      >Private</a
+    >
+    <button
+      mat-stroked-button
+      class="add-to-bag-button w-100 text-center mx-0 mt-2"
+      [ngClass] = "{'disabled':!isLoggedIn}"
+      (click)="addItemToCart(foodItemInfo['id'])"
+      [disabled] = "!isLoggedIn"
+    >
+      <mat-icon style="font-size: 1.2rem">shopping_cart</mat-icon>Add to cart
+    </button>
+  </mat-card-actions>
+</mat-card>

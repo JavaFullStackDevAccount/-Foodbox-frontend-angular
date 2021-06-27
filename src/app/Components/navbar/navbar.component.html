@@ -1,0 +1,139 @@
+<nav
+  class="navbar navbar-light bg-white sticky-top d-none d-lg-block"
+  style="z-index: 99999"
+>
+  <div class="container">
+    <div class="w-100">
+      <img [src]="logoUrl" alt="logo" class="navbar-logo mt-0 pt-0" />
+      <mat-form-field
+        class="w-50 ml-4"
+        appearance="outline"
+        [ngClass]="{
+          invisible: !showSearch
+        }"
+      >
+        <input
+          matInput
+          type="text"
+          placeholder="Search for your favorite food ...."
+          [(ngModel)]="foodToSearch"
+          (keyup)="emmitSearchEvent()"
+        />
+        <button
+          matSuffix
+          mat-icon-button
+          aria-label="Search"
+          (click)="emmitSearchEvent()"
+        >
+          <mat-icon>search</mat-icon>
+        </button>
+      </mat-form-field>
+
+      <p class="w-100 d-inline ml-5 pl-5">
+        <a routerLink="/login" class="nav-links mr-4" *ngIf="!isLogedIn"
+          >Sign in</a
+        >
+        <a routerLink="/register" class="nav-links" *ngIf="!isLogedIn"
+          >Sign up</a
+        >
+        <a href="/" class="nav-links mr-3 text-truncate" *ngIf="isLogedIn"
+          >Hi, {{ usersEmail }}</a
+        >
+        <a routerLink="/food/item/cart" class="nav-links"
+          ><mat-icon
+            class="nav-links mr-3"
+            style="vertical-align: sub; font-size: 1.2rem"
+            *ngIf="isLogedIn"
+            >shopping_cart</mat-icon
+          ></a
+        >
+        <a routerLink="/food/item/orders" class="nav-links"
+          ><mat-icon
+            class="nav-links mr-3"
+            style="vertical-align: sub; font-size: 1.2rem ;"
+            *ngIf="isLogedIn"
+            >assignment_turned_in</mat-icon
+          ></a
+        >
+        <a routerLink="/food/item/cart" class="nav-links" (click)="logoutUser()"
+          ><mat-icon
+            class="nav-links"
+            style="vertical-align: sub; font-size: 1.2rem"
+            *ngIf="isLogedIn"
+            >exit_to_app</mat-icon
+          ></a
+        >
+      </p>
+    </div>
+  </div>
+</nav>
+
+<!-- For mobile UI-->
+<nav
+  class="navbar navbar-light bg-white sticky-top d-block d-lg-none"
+  style="z-index: 99999"
+>
+  <div class="container">
+    <div class="navbar-brand" (click) = "navigateToHomePage()">
+      <img [src]="logoUrl" alt="logo" class="navbar-logo mt-0 pt-0 logo-img" />
+    </div>
+
+    <div *ngIf="!isLogedIn; else loggedIn">
+      <a routerLink="/login" class="nav-links mr-4 d-inline">Sign in</a>
+      <a routerLink="/register" class="nav-links d-inline">Sign up</a>
+    </div>
+
+    <ng-template #loggedIn>
+      <div>
+        <a routerLink="/food/item/cart" class="nav-links"
+          ><mat-icon
+            class="nav-links mr-4"
+            style="vertical-align: sub; font-size: 1.2rem ;"
+            *ngIf="isLogedIn"
+            >shopping_cart</mat-icon
+          ></a
+        >
+        <a routerLink="/food/item/orders" class="nav-links"
+          ><mat-icon
+            class="nav-links mr-4"
+            style="vertical-align: sub; font-size: 1.2rem ;"
+            *ngIf="isLogedIn"
+            >assignment_turned_in</mat-icon
+          ></a
+        >
+        <a routerLink="/food/item/cart" class="nav-links" (click)="logoutUser()"
+          ><mat-icon
+            class="nav-links"
+            style="vertical-align: sub; font-size: 1.2rem"
+            *ngIf="isLogedIn"
+            >exit_to_app</mat-icon
+          ></a
+        >
+      </div>
+    </ng-template>
+
+    <mat-form-field
+      class="w-100 ml-lg-4"
+      [ngClass]="{
+        'd-none': !showSearch
+      }"
+      appearance="outline"
+    >
+      <input
+        matInput
+        type="text"
+        placeholder="Search for your favorite food ...."
+        [(ngModel)]="foodToSearch"
+        (keyup)="emmitSearchEvent()"
+      />
+      <button
+        matSuffix
+        mat-icon-button
+        aria-label="Search"
+        (click)="emmitSearchEvent()"
+      >
+        <mat-icon>search</mat-icon>
+      </button>
+    </mat-form-field>
+  </div>
+</nav>

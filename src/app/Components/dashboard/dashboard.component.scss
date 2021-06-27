@@ -1,0 +1,53 @@
+
+@media (min-width: 100px) {
+    .fab{
+        border:none;
+        color:white;
+        position: fixed;
+        bottom: 2rem;
+        border-radius: 100%;
+        right: 2rem;
+        z-index: 999;
+    }
+    
+  }
+  
+  @media (min-width: 576px) {
+    .fab{
+        border:none;
+        color:white;
+        position: fixed;
+        bottom: 5rem;
+        border-radius: 100%;
+        right: 2rem;
+        z-index: 999;
+    }
+    
+  }
+  
+  // Medium devices (tablets, 768px and up)
+  @media (min-width: 768px) {
+    .fab{
+        border:none;
+        color:white;
+        position: fixed;
+        bottom: 5rem;
+        border-radius: 100%;
+        right: 5rem;
+        z-index: 999;
+    }
+    
+  }
+
+  @media (min-width: 992px) {
+    .fab{
+        border:none;
+        color:white;
+        position: fixed;
+        bottom: 5rem;
+        border-radius: 100%;
+        right: 10.5rem;
+        z-index: 999;
+    }
+    
+  }

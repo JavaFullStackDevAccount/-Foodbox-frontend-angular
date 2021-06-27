@@ -1,0 +1,123 @@
+<app-navbar></app-navbar>
+
+<div class="container mt-lg-5 mt-3">
+  <p class="filter-text">Orders</p>
+  <hr />
+</div>
+
+<div class="container" *ngIf="!ordersAreEmpty; else emptyOrdersBlock">
+  <ol class="list-group" *ngIf="ordersFromServer; else loading">
+    <li
+      class="list-group-item px-0 px-lg-3"
+      *ngFor="let order of ordersFromServer"
+      [id]="order['orderId']"
+    >
+      <mat-accordion class="example-headers-align" multi>
+        <mat-expansion-panel>
+          <mat-expansion-panel-header style="height: auto">
+            <mat-panel-title>
+              <ul class="list-group">
+                <li class="list-group-item">
+                  <span class="h5"> Order number: {{ order["orderId"] }} </span>
+                </li>
+                <li class="list-group-item d-lg-none text-muted">
+                  Ordered on: {{ order["itemsInOrder"][0]["orderedOn"] }} &nbsp;
+                </li>
+                <li class="list-group-item text-muted">
+                  <span> Order total: {{ order["total"] }}INR </span>
+                </li>
+
+                <li class="list-group-item text-muted">
+                  <span> Discount: {{ order["discount"] }}% </span>
+                </li>
+
+                <li class="list-group-item text-muted">
+                  <span> Amount paid: {{ order["totalPayable"] }}INR </span>
+                </li>
+
+                <li class="list-group-item d-lg-none text-muted">
+                  Delivery charges: {{ order["deliveryCharges"] }}INR &nbsp;
+                </li>
+
+                <li class="list-group-item text-muted">
+                  <span> Total items: 4 </span>
+                </li>
+              </ul>
+            </mat-panel-title>
+            <mat-panel-description class="d-none d-lg-flex align-items-center">
+              <ul class="list-group">
+                <li class="list-group-item pt-0">
+                  Delivery charges: {{ order["deliveryCharges"] }}INR &nbsp;
+                </li>
+                <li class="list-group-item pt-0">
+                  Ordered on: {{ order["itemsInOrder"][0]["orderedOn"] }} &nbsp;
+                  <mat-icon>calendar_today</mat-icon>
+                </li>
+              </ul>
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+
+          <div class="row">
+            <div
+              class="col-lg-6 col-12"
+              *ngFor="let itemInOrder of order['itemsInOrder']"
+            >
+              <mat-card class="pb-1 mb-3">
+                <mat-card-content class="container-fluid">
+                  <div class="row">
+                    <div class="col-lg-7 col-12 order-12 order-lg-1">
+                      <mat-card-title>{{
+                        itemInOrder["title"]
+                      }}</mat-card-title>
+                      <p class="text-muted">
+                        {{ itemInOrder["description"] }}
+                      </p>
+                      <p class="text-muted">
+                        Discount: {{ itemInOrder["discount"] }}%
+                      </p>
+
+                      <p class="text-danger">
+                        Price: {{ itemInOrder["price"] }} INR
+                      </p>
+                    </div>
+                    <div
+                      class="
+                        col-lg-5 col-12
+                        order-1 order-lg-12
+                        d-flex
+                        align-items-center
+                        mb-4 mb-lg-0
+                      "
+                    >
+                      <img
+                        class="img-fluid h-auto"
+                        style="border-radius: 5px"
+                        [src]="itemInOrder['imageUrl']"
+                      />
+                    </div>
+                  </div>
+                </mat-card-content>
+              </mat-card>
+            </div>
+          </div>
+        </mat-expansion-panel>
+      </mat-accordion>
+    </li>
+  </ol>
+</div>
+
+<ng-template #emptyOrdersBlock>
+  <div class="container">
+    <div class="px-2 w-100 text-center mt-5">
+      <span class="h4 text-muted font-weight-normal">No orders yet</span>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #loading>
+  <app-loading></app-loading>
+</ng-template>
+
+<div class="jumbotron bg-transparent"></div>
+
+<div class="jumbotron bg-transparent"></div>

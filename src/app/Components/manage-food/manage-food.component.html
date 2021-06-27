@@ -1,0 +1,133 @@
+<app-navbar></app-navbar>
+
+<div class="container text-center">
+  <div class="jumbotron text-center" *ngIf="!foodItemImageUrl; else foodImage">
+    <span class="h4 text-muted">Food image will show up here !!</span>
+  </div>
+  <ng-template #foodImage>
+    <img
+      class="img-fluid"
+      style="border-radius: 5px"
+      [src]="foodItemImageUrl"
+    />
+  </ng-template>
+
+  <hr />
+</div>
+
+<form
+  [formGroup]="foodItemInformationForm"
+  (submit)="foodItemInformationFromSubmit()"
+>
+  <div class="container">
+    <header class="filter-text mb-4">
+      {{ componentVisitedForEdit ? "Update" : "Add" }} item
+    </header>
+    <div class="row text-center">
+      <div class="col-lg-6 col-12 mx-auto text-center">
+        <mat-form-field appearance="outline" class="w-100">
+          <mat-label>Food title</mat-label>
+          <input
+            formControlName="foodItemTitle"
+            matInput
+            type="text"
+            placeholder="Enter food title ...."
+          />
+        </mat-form-field>
+      </div>
+
+      <div class="col-lg-6 col-12">
+        <mat-form-field appearance="outline" class="w-100">
+          <mat-label>Food price</mat-label>
+          <input
+            formControlName="foodItemPrice"
+            matInput
+            type="number"
+            placeholder="Enter food price ...."
+          />
+          <mat-icon matSuffix>money</mat-icon>
+        </mat-form-field>
+      </div>
+    </div>
+
+    <div class="row text-center">
+      <div class="col-lg-6 col-12">
+        <mat-form-field appearance="outline" class="w-100">
+          <mat-label>Select cuisine type</mat-label>
+          <mat-select formControlName="foodItemCuisineType">
+            <mat-option value="Veg">Veg</mat-option>
+            <mat-option value="Chicken">Chicken</mat-option>
+            <mat-option value="Pizza">Pizza</mat-option>
+            <mat-option value="Indian">Indian</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+      <div class="col-lg-6 col-12">
+        <mat-form-field appearance="outline" class="w-100">
+          <mat-label>Food discount in percentage</mat-label>
+          <input
+            formControlName="foodItemDiscountPercentage"
+            matInput
+            type="number"
+            placeholder="Enter food discount percentage e.g 10% ...."
+          />
+        </mat-form-field>
+      </div>
+    </div>
+
+    <div class="row text-center">
+      <div class="col-lg-6 col-12">
+        <mat-form-field appearance="outline" class="w-100">
+          <mat-label>Food image url</mat-label>
+          <input
+            formControlName="foodItemImageUrl"
+            matInput
+            type="url"
+            placeholder="Enter food image url e.g https://image/image.jpg"
+            (change)="showFoodItemImage($event)"
+          />
+        </mat-form-field>
+      </div>
+
+      <div class="col-lg-6 col-12 text-center">
+        <mat-form-field appearance="outline" class="w-100">
+          <mat-label>Select rating</mat-label>
+          <mat-select formControlName="foodItemRating">
+            <mat-option value="1star">1 star</mat-option>
+            <mat-option value="2star">2 star</mat-option>
+            <mat-option value="3star">3 star</mat-option>
+            <mat-option value="4star">4 star</mat-option>
+            <mat-option value="5star">5 star</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+      <div class="col-12">
+        <mat-form-field appearance="outline" class="w-100">
+          <mat-label>Food item description</mat-label>
+          <textarea
+            formControlName="foodItemDescription"
+            matInput
+            placeholder="Enter a small description of the food item"
+            rows="4"
+          ></textarea>
+        </mat-form-field>
+      </div>
+    </div>
+
+    <div class="jumbotron bg-transparent px-0">
+      <button
+        mat-button
+        class="w-100 text-white py-1"
+        [ngClass]="{
+          ' bg-success ': componentVisitedForEdit === false,
+          ' bg-warning ': componentVisitedForEdit === true
+        }"
+        type="submit"
+      >
+        {{ componentVisitedForEdit ? "Update food item" : "Add food item" }}
+      </button>
+    </div>
+  </div>
+</form>

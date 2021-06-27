@@ -1,0 +1,28 @@
+<app-navbar (searchEvent)="searchForFood($event)"> </app-navbar>
+
+<app-food-category
+  (updateItemsWithFetchedCategory)="updateFoodItemsByFetchedCategory($event)"
+>
+</app-food-category>
+
+<app-filter-food (filterEventEmit)="filterFoodItems($event)"></app-filter-food>
+
+<div class="container mt-3">
+  <div class="row mt-3" *ngIf="allFoodItems; else loading">
+    <div class="col-md-4 col-12" *ngFor="let foodItem of allFoodItems">
+      <app-food-card
+        [foodItemInfo]="foodItem"
+        (deleteFoodItemEvent)="deleteFoodItem($event)"
+        (updateFoodItemVisibilityEvent)="updateFoodItemVisiblity($event)"
+      ></app-food-card>
+    </div>
+  </div>
+</div>
+
+<a routerLink="/add/food" class="fab p-3 bg-success" *ngIf="isAdmin">
+  <mat-icon style="vertical-align: middle">add</mat-icon>
+</a>
+
+<ng-template #loading>
+  <app-loading></app-loading>
+</ng-template>

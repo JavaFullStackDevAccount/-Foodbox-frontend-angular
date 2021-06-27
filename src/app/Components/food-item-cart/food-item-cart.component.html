@@ -1,0 +1,113 @@
+<app-navbar></app-navbar>
+
+<div class="container mt-lg-5 mt-1">
+  <p class="filter-text">My cart</p>
+  <hr />
+</div>
+
+<div class="container" *ngIf="itemsInCartFromServer; else loading">
+  <div class="row" *ngIf="!cartIsEmpty; else emptyCartBlock">
+    <div class="col-lg-6 col-12">
+      <ul class="list-group border-0">
+        <li
+          class="list-group-item px-0 border-0"
+          *ngFor="let cartItem of itemsInCartFromServer"
+        >
+          <mat-card
+            class="pb-1"
+            [ngClass]="!cartItem['publicVisiblity'] ? 'item-not-avaliable' : ''"
+          >
+            <mat-card-content class="container-fluid">
+              <div class="row">
+                <div class="col-lg-7 col-12 order-12 order-lg-1">
+                  <mat-card-title>{{ cartItem["title"] }}</mat-card-title>
+                  <p class="text-muted">
+                    {{ cartItem["description"] }}
+                  </p>
+                  <p class="text-muted">
+                    Discount: {{ cartItem["discount"] }}%
+                  </p>
+
+                  <p class="text-danger">Price: {{ cartItem["price"] }} INR</p>
+                </div>
+                <div
+                  class="col-lg-5 col-12 order-1 order-lg-12 mx-auto d-flex align-items-center mb-4 mb-lg-0"
+                >
+                  <img
+                    class="img-fluid h-auto"
+                    style="border-radius: 5px;"
+                    [src]="cartItem['imageUrl']"
+                  />
+                </div>
+              </div>
+            </mat-card-content>
+            <button
+              class="delete-food-button"
+              (click)="removeItemFromCart(cartItem['id'])"
+            >
+              <mat-icon style="vertical-align: middle;">close</mat-icon>
+            </button>
+          </mat-card>
+        </li>
+      </ul>
+    </div>
+
+    <div class="col-lg-4 col-12 mx-auto text-center">
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title class="text-muted"> Order summary </mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <ul class="list-group border-0">
+            <li class="list-group-item text-justify border-0">
+              <div class="row">
+                <div class="col-6 text-left">Total</div>
+                <div class="col-6 text-right">{{ totalAmount }} INR</div>
+              </div>
+            </li>
+
+            <li class="list-group-item text-justify border-0">
+              <div class="row">
+                <div class="col-6 text-left">Discount</div>
+                <div class="col-6 text-right">{{ discount }}%</div>
+              </div>
+            </li>
+
+            <li class="list-group-item text-justify border-0">
+              <div class="row">
+                <div class="col-6 text-left">Dilevery charges</div>
+                <div class="col-6 text-right">{{ deliveryCharge }} INR</div>
+              </div>
+            </li>
+
+            <li class="list-group-item text-justify border-0">
+              <div class="row">
+                <div class="col-6 text-left">Total payable</div>
+                <div class="col-6 text-right">{{ totalPayable }} INR</div>
+              </div>
+            </li>
+
+            <li class="list-group-item text-justify border-0">
+              <app-checkout
+                [amountPayable]="totalPayable"
+                (addToOrders)="addToOrdersAfterPaymentSuccess($event)"
+              ></app-checkout>
+            </li>
+          </ul>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+  <ng-template #emptyCartBlock>
+    <div class="px-2 w-100 text-center mt-5">
+      <span class="h4 text-muted font-weight-normal">No items in cart</span>
+    </div>
+  </ng-template>
+</div>
+
+<ng-template #loading>
+  <app-loading></app-loading>
+</ng-template>
+
+<div class="jumbotron bg-transparent"></div>
+<div class="jumbotron bg-transparent"></div>

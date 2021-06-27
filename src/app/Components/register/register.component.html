@@ -1,0 +1,98 @@
+<div
+  class="
+    container
+    mt-3
+    mb-5
+    pb-5
+    pt-5
+    text-center
+    d-flex
+    justify-content-center
+  "
+>
+  <form [formGroup]="registerForm" (submit)="registerFormSubmit()">
+    <div class="row mt-5">
+      <div class="col-12 mb-3 text-center">
+        <header class="h3 mb-3 text-muted">Sign up</header>
+      </div>
+
+      <div class="col-12 mb-3">
+        <mat-form-field appearance="outline">
+          <mat-label>Name</mat-label>
+          <input
+            matInput
+            type="email"
+            placeholder="Enter your name ...."
+            formControlName="name"
+          />
+        </mat-form-field>
+      </div>
+
+      <div class="col-12 mb-3">
+        <mat-form-field appearance="outline">
+          <mat-label>Phone number</mat-label>
+          <input
+            matInput
+            type="number"
+            placeholder="Enter your phone number ...."
+            formControlName="phoneNumber"
+          />
+        </mat-form-field>
+      </div>
+
+      <div class="col-12 mb-3">
+        <mat-form-field appearance="outline">
+          <mat-label>Username</mat-label>
+          <input
+            matInput
+            type="email"
+            placeholder="Enter your username ...."
+            formControlName="username"
+          />
+        </mat-form-field>
+      </div>
+
+      <div class="col-12 mb-3">
+        <mat-form-field appearance="outline">
+          <mat-label>Password</mat-label>
+          <input
+            matInput
+            type="password"
+            placeholder="Enter your password ...."
+            formControlName="password"
+          />
+        </mat-form-field>
+      </div>
+
+      <div class="col-12 mb-3">
+        <mat-form-field appearance="outline">
+          <mat-label>Address</mat-label>
+          <textarea
+            matInput
+            placeholder="Ex. 100 Main St"
+            rows="7"
+            formControlName="address"
+          ></textarea>
+        </mat-form-field>
+      </div>
+      
+
+      <div class="col-12 mb-4">
+        <button
+          class="p-1"
+          mat-button
+          style="background-color: var(--indigo); color: white"
+          type="submit"
+        >
+          Sign up
+        </button>
+      </div>
+
+      <div class="col-12 mb-3">
+        <p class="text-muted" style="font-weight: lighter">
+          Enter food heaven<a routerLink="/login"> Sign in</a>
+        </p>
+      </div>
+    </div>
+  </form>
+</div>

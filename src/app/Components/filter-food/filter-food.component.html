@@ -1,0 +1,115 @@
+<div class="container mt-5 d-none d-lg-block">
+  <!--  -->
+
+  <div class="w-100 mt-5">
+    <div class="row no-gutters">
+      <div class="col-md-2 col-6 filter-text text-dark">
+        <mat-icon>restaurant</mat-icon> Food items
+      </div>
+      <div class="col-md-10 col-6 pr-0">
+        <br />
+        <div class="bg-danger w-100 divider"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row pb-0 mt-5">
+    <div class="col-lg-1 col-12 ml-2 ml-lg-0">
+      <p class="filter-text pt-3 d-block">
+        <mat-icon class="d-inline">filter_list</mat-icon>&nbsp;Filter
+      </p>
+    </div>
+
+    <div class="col-lg-2 col-12 text-center">
+      <mat-form-field appearance="outline" class="w-75">
+        <mat-label>Rating</mat-label>
+        <mat-select  [(ngModel)] ='filterRatings'>
+          <mat-option value="all">All</mat-option>
+          <mat-option value="1star">1 star</mat-option>
+          <mat-option value="2star">2 star</mat-option>
+          <mat-option value="3star">3 star</mat-option>
+          <mat-option value="4star">4 star</mat-option>
+          <mat-option value="5star">5 star</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <div class="col-lg-2 col-12 text-left mx-auto">
+      <mat-form-field appearance="outline" class="w-75">
+        <mat-label>Sort by price</mat-label>
+        <mat-select [(ngModel)] ='sortBy'>
+          <mat-option value="lth">Lowest to highest</mat-option>
+          <mat-option value="htl">Highest to lowest</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <div class="col-lg-7 col-12 text-right mr-0 pr-0">
+      <button
+        mat-stroked-button
+        class="p-2 mt-1"
+        style="border: 1px solid var(--indigo); color: var(--indigo)"
+        (click)="applySelectedFilters()"
+      >
+        Apply
+      </button>
+    </div>
+  </div>
+</div>
+
+<!--For mobile ui-->
+<div class="container d-lg-none mt-3">
+  <mat-accordion class="example-headers-align" multi>
+    <mat-expansion-panel
+      (opened)="panelOpenState = true"
+      (closed)="panelOpenState = false"
+    >
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          <p class="text-muted pt-3 d-block">
+            <mat-icon
+              class="d-inline"
+              style="vertical-align: text-bottom; font-size: 1.2rem"
+              >filter_list</mat-icon
+            >&nbsp;Filter
+          </p>
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+
+      <div class="w-100 text-left ml-lg-3">
+        <mat-form-field appearance="outline" class="w-100">
+          <mat-label>Rating</mat-label>
+          <mat-select [(ngModel)] ='filterRatings'>
+            <mat-option value="all">All</mat-option>
+            <mat-option value="1star">1 star</mat-option>
+            <mat-option value="2star">2 star</mat-option>
+            <mat-option value="3star">3 star</mat-option>
+            <mat-option value="4star">4 star</mat-option>
+            <mat-option value="5star">5 star</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+      <div class="w-100 text-left ml-lg-3 text-left ml-lg-3">
+        <mat-form-field appearance="outline" class="w-100">
+          <mat-label>Sort by price</mat-label>
+          <mat-select [(ngModel)] ='sortBy'>
+            <mat-option value="lth">Lowest to highest</mat-option>
+            <mat-option value="htl">Highest to lowest</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+      <div class="w-100 ml-lg-3 text-left ml-lg-3">
+        <button
+        mat-stroked-button
+        class="p-1 mt-1 w-100"
+        style="border: 1px solid var(--indigo); color: var(--indigo)"
+        (click)="applySelectedFilters()"
+      >
+        Apply
+      </button>
+      </div>
+    </mat-expansion-panel>
+  </mat-accordion>
+</div>

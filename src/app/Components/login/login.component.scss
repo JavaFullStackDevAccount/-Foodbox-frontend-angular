@@ -1,0 +1,60 @@
+@media (min-width: 100px) {
+  mat-form-field,
+  button {
+    width: 100%;
+  }
+}
+
+@media (min-width: 576px) {
+  mat-form-field,
+  button {
+    width: 100%;
+  }
+}
+
+// Medium devices (tablets, 768px and up)
+@media (min-width: 768px) {
+  mat-form-field,
+  button {
+    width: 50%;
+  }
+  textarea, input , p ,
+  mat-label {
+    font-size: 1rem !important;
+  }
+}
+
+// Large devices (desktops, 992px and up)
+@media (min-width: 992px) {
+  mat-form-field,
+  button {
+    width: 50%;
+  }
+  textarea, input , p ,
+  mat-label {
+    font-size: 1.1rem !important;
+  }
+}
+
+// Extra large devices (large desktops, 1200px and up)
+@media (min-width: 1200px) {
+  mat-form-field,
+  button {
+    width: 50%;
+  }
+  textarea, input , p ,
+  mat-label {
+    font-size: 1.1rem !important;
+  }
+}
+
+@media (min-width: 1920px) {
+  mat-form-field,
+  button {
+    width: 50%;
+  }
+  textarea, input , p ,
+  mat-label {
+    font-size: 1.1rem !important;
+  }
+}

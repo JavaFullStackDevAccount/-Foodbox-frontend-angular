@@ -1,0 +1,40 @@
+.nav-links {
+  text-decoration: none;
+  font-size: 1.1rem;
+  color: grey;
+
+  &:hover {
+    color: var(--indigo);
+  }
+}
+
+
+@media (min-width: 100px) {
+  .logo-img{
+    width: 7rem;
+    height: 3rem;
+    max-width: 16rem;
+    min-width: 6rem;
+  }
+}
+
+
+
+// Medium devices (tablets, 768px and up)
+@media (min-width: 768px) {
+  .logo-img{
+    width: 8rem;
+    max-width: 19rem;
+    min-width: 1rem;
+  }
+}
+
+// Large devices (desktops, 992px and up)
+@media (min-width: 992px) {
+  .logo-img{
+    width: 4rem;
+    max-width: 6rem;
+    min-width: 1rem;
+  }
+}
+

@@ -1,0 +1,22 @@
+::ng-deep mat-expansion-panel,
+mat-accordion {
+  box-shadow: none !important;
+}
+
+ul,
+li {
+  border: none;
+  background-color: transparent;
+}
+mat-icon{
+  vertical-align: bottom ;
+  font-size: 1.2rem;
+}
+
+mat-expansion-panel {
+  border: 0.1rem solid;
+  border-color: (grey);
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  border-left: 0.25rem dashed grey;
+}
