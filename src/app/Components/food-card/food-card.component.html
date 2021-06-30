@@ -19,6 +19,7 @@
     <button
       class="delete-food-button"
       (click)="deleteFoodItem(foodItemInfo['id'])"
+      *ngIf="isUserAdmin"
     >
       <mat-icon style="vertical-align: middle">close</mat-icon>
     </button>

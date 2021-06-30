@@ -24,10 +24,15 @@ export class DashboardComponent implements OnInit {
     }
     this._foodItemService.getAllFoodItems().subscribe((response: any) => {
       if (response) {
-        this.allFoodItems = [...response];
-        this.allFoodItemsOriginalCopy = [...response];
+          this.allFoodItems = (this.isAdmin) ? ([...response]) : ([...this.filterOutPrivateItems(response)]);
+          this.allFoodItemsOriginalCopy = [...this.allFoodItems];
       }
     });
+  }
+
+  filterOutPrivateItems(response:any){
+
+    return response.filter((foodItem:any) => foodItem["publicVisiblity"] === true);
   }
 
   refreshDashboard() {
