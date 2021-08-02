@@ -17,6 +17,8 @@ export class NavbarComponent implements OnInit {
 
   showSearch: boolean = true;
 
+  isUserAdmin:boolean = false;
+  
   isLogedIn: boolean = false;
 
   usersEmail: string | null = null;
@@ -35,6 +37,7 @@ export class NavbarComponent implements OnInit {
   checkLoginAndUpdateNavbarOptions() {
     if (this._credentialsStorageService.isLogenIn()) {
       this.isLogedIn = true;
+      this.isUserAdmin = this._credentialsStorageService.getAdminStatus();
       this.usersEmail = this._credentialsStorageService.getEmail().split("@")[0];
     }
   }

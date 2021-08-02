@@ -57,6 +57,7 @@
       class="add-to-bag-button w-100 text-center mx-0 mt-2"
       [ngClass] = "{'disabled':!isLoggedIn}"
       (click)="addItemToCart(foodItemInfo['id'])"
+	  *ngIf="!isUserAdmin"
       [disabled] = "!isLoggedIn"
     >
       <mat-icon style="font-size: 1.2rem">shopping_cart</mat-icon>Add to cart

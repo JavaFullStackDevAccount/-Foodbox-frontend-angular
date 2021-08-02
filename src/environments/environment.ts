@@ -7,7 +7,7 @@ export const environment = {
   production: false,
   
   logoUrl: "../assets/logo-with-bg.JPG",
-  serverUrl: "http://localhost:8080"
+  serverUrl: "http://ec2-3-238-93-17.compute-1.amazonaws.com:8080"
 };
 
 /*
